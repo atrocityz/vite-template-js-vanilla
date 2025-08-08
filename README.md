@@ -1,6 +1,6 @@
 # Шаблон для разработки интерфейсов на HTML, SCSS и JS со сборщиком Vite
 
-_HTML, SCSS, PostCSS, JS, Prettier, Eslint, Commitlint, Husky, Vite_
+_HTML, SCSS, PostCSS, JS, Prettier, Eslint, Vite_
 
 ## Начало работы
 
@@ -25,9 +25,6 @@ npm i
 ```
 ├── .github/workflows                    # Папка с инструкциями для github actions по деплою проекта
 │ └── static.yml
-├── .husky/                              # Папка с инструкциями для husky перед созданием коммита
-│ ├── commit-msg                         # Проверка сообщения коммита
-│ └── pre-commit                         # Выполнение проверки кода
 ├── public/                              # Папка для хранения файлов, которые попадут в build версию без изменений
 │ └── (favicon, видеофайлы и т.п.)
 ├── src/                                 # Папка с исходниками разработки
@@ -54,14 +51,12 @@ npm i
 │ │ ├── utils.scss                       # Утилитарные стили
 │ │ ├── variables.scss                   # CSS переменные
 │ │ └── vendors.scss                     # Подключение библиотек
-│ ├── about.html                         # Страница "About" (как пример для создания многостраничного сайта)
 │ ├── index.html                         # Основная страница сайта
 │ └── main.js                            # Подключение стилей и скриптов
 ├── .gitignore                           # Список игнорируемых файлов и папок для git
 ├── .prettierc                           # Конфигурация для prettier
 ├── .stylelintignore                     # Список игнорируемых папок и файлов для stylelint
 ├── .stylelintrc                         # Конфигурация для stylelint
-├── commitlint.config.js                 # Конфигурация для commitlint
 ├── eslint.config.js                     # Конфигурация для eslint
 ├── jsconfig.json                        # Конфигурация для js
 ├── package.json                         # Основной файл с конфигурацией пакетного менеджера
@@ -77,7 +72,7 @@ npm i
 - [Работа с HTML](#работа-с-html)
 - [Работа с JavaScript](#работа-с-javascript)
 - [Чистый код](#чистый-код)
-- [Углубленная работа с Git и GitHub](#углубленная-работа-с-git-и-github)
+- [Автоматический деплоинг на GitHub Pages](#автоматический-деплоинг-на-github-pages)
 
 ## Работа со стилями
 
@@ -128,12 +123,6 @@ npm i
 - [Stylelint](https://stylelint.io/) - для проверки кода стилей на следование правилам, прописанным в конфигурационном файле, включая расположение свойств;
 - [Eslint](https://eslint.org/) - для проверки JavaScript кода на следование правилам, прописанным в конфигурационном файле;
 
-## Углубленная работа с Git и GitHub
+## Автоматический деплоинг на GitHub Pages
 
 Для GitHub используется GitHub Actions, который позволяет автоматически деплоить build версию проекта, после отправки изменений на GitHub.
-
-Для Git - [Husky](https://typicode.github.io/husky/), [Lint-staged](https://github.com/lint-staged/lint-staged) и [Commitlint](https://commitlint.js.org/). Все эти инструменты в связке позволяют автоматически проверять название коммита и код перед его созданием.
-
-## Полезные ресурсы
-
-- [Статья про именование коммитов](https://www.conventionalcommits.org/ru/v1.0.0/)
