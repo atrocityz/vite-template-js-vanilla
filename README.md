@@ -5,8 +5,14 @@ _HTML, SCSS, PostCSS, JS, Prettier, Eslint, Vite_
 ## Начало работы
 
 ```zsh
-git clone https://github.com/atrocityz/vite-template-js.git
-cd vite-template-js
+npx create-vite-template-js --vanilla
+```
+
+или
+
+```zsh
+git clone https://github.com/atrocityz/vite-template-js-vanilla.git
+cd vite-template-js-vanilla
 npm i
 ```
 
@@ -15,8 +21,8 @@ npm i
 - Настроить конфигурацию eslint, prettier, stylelint под себя, если это требуется;
 - Удалить ненужные файлы из папок **public**, **images**, **fonts**, **scripts**, **styles/blocks**;
 - Скачать используемые в проекте шрифты и конвертировать их в woff2 формат;
-- Задать ширину контейнера для desktop и laptop версий в **constants.scss**;
 - Локально подключить шрифты в **fonts.scss** и в html-файле страницы для preload;
+- Задать ширину контейнера для desktop и laptop версий в **constants.scss**;
 - Определить базовые переменные для проекта в **variables.scss**;
 - Задать focus-visible и disabled эффекты, которые реализованы в миксине с этими же названиями в **mixins.scss**;
 
