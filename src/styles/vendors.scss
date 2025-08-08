@@ -1,2 +1,4 @@
 // Файл для импорта различных библиотек (normalize, swiper, imask...)
-@import "@a1rth/css-normalize/index.css";
+@use "@a1rth/css-normalize";
+
+// @use "swiper/css/bundle";
