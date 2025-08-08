@@ -1,0 +1,6 @@
+.title {
+  @include fluid-text(32, 20);
+
+  margin: 0;
+  font-weight: 700;
+}

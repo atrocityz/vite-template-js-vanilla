@@ -1,0 +1,19 @@
+// Определение стандартных css переменных
+:root {
+  // Colors
+  --color-white: #fff;
+  --color-black: #000;
+
+  // Complete components
+  --border: 1px solid var(--color-black);
+
+  // Fonts
+  --font-family: "Inter", sans-serif;
+
+  // Containers
+  --container-width: #{fluid-to-laptop($container-desktop-width, $container-laptop-width)};
+  --container-padding-x: 16px;
+
+  // Animations
+  --transition-duration: 0.2s;
+}
