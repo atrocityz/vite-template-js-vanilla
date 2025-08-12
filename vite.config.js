@@ -19,6 +19,7 @@ export default defineConfig({
     outDir,
     emptyOutDir: true,
     minify: true,
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: htmlFiles.reduce(
         (acc, file) => ({
@@ -33,7 +34,7 @@ export default defineConfig({
         chunkFileNames: "assets/[name].js",
         assetFileNames: ({ name }) => {
           name = name.toLowerCase()
-          if (/\.(png|jpe?g|gif|webp)$/.test(name ?? "")) {
+          if (/\.(png|jpe?g|gif|webp|svg)$/.test(name ?? "")) {
             return "assets/images/[name][extname]"
           }
           if (/\.(woff2)$/.test(name ?? "")) {
