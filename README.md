@@ -14,6 +14,7 @@ npx create-vite-template-js --vanilla
 - Удалить ненужные файлы из папок **public**, **images**, **fonts**, **scripts**, **styles/blocks**;
 - Скачать используемые в проекте шрифты и конвертировать их в woff2 формат;
 - Локально подключить шрифты в **fonts.scss** и в html-файле страницы для preload;
+- Убрать лишний код из **index.html**;
 - Задать ширину контейнера для desktop и laptop версий в **constants.scss**;
 - Определить базовые переменные для проекта в **variables.scss**;
 - Задать focus-visible и disabled эффекты, которые реализованы в миксине с этими же названиями в **mixins.scss**;
@@ -55,15 +56,14 @@ npx create-vite-template-js --vanilla
 │ ├── index.html                         # Основная страница сайта
 │ └── main.js                            # Подключение стилей и скриптов
 ├── .gitignore                           # Список игнорируемых файлов и папок для git
-├── .prettierc                           # Конфигурация для prettier
-├── .stylelintignore                     # Список игнорируемых папок и файлов для stylelint
-├── .stylelintrc                         # Конфигурация для stylelint
 ├── eslint.config.js                     # Конфигурация для eslint
 ├── jsconfig.json                        # Конфигурация для js
 ├── package.json                         # Основной файл с конфигурацией пакетного менеджера
 ├── package-lock.json                    # Список определенных версий зависимостей для пакетного менеджера
-├── postcss.config.js                    # Конфигурация postcss
+├── postcss.config.js                    # Конфигурация для postcss
+├── prettier.config.js                   # Конфигурация для prettier
 ├── README.md                            # Документация шаблона
+├── stylelint.config.js                  # Конфигурация для stylelint
 └── vite.config.js                       # Конфигурация для vite
 ```
 
@@ -88,9 +88,9 @@ npx create-vite-template-js --vanilla
 - Создаем для него файл в папке **blocks** и пишем нужные нам стили;
 - Подключаем наш файл со стилями в **index.js**, который находится в папке **styles**;
 
-Все сторонние стили (стили библиотек и т.п.) подключаются в **vendors.scss**
+Все сторонние стили (стили библиотек и т.п.) подключаются в **vendors.scss**.
 
-> Название для scss-файлов не нужно начинать со знака подчеркивания "\_"
+> Название для scss-файлов не нужно начинать со знака подчеркивания "\_".
 
 Вся папка **helpers** содержит в себе вспомогательные инструменты для работы со стилями.
 **Vite** автоматически импортирует эти инструменты в каждый файл со стилями, поэтому можно спокойно использовать любые функции/миксины/константы, реализованные в этих инструментах.
@@ -99,28 +99,56 @@ npx create-vite-template-js --vanilla
 Эти функции fluid() и fluid-to-laptop() конвертируют переданные два значения min и max в использование функции [clamp()](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp),
 разница только в конечной точке, для fluid() это `$minViewportWidth` (можно поменять значение в описании функции), а для fluid-to-laptop() это значение константы `$container-laptop-width`.
 
-При использовании команды `npm run build`, на выходе получается минифицированный и отполированный с помощью постпроцессора **PostCSS** (плагинов [postcss-preset-env](https://www.npmjs.com/package/postcss-preset-env) и [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem)) css-файл.
+При использовании команды `npm run build`, на выходе получается минифицированный и отполированный с помощью постпроцессора **postcss** (плагинов [postcss-preset-env](https://www.npmjs.com/package/postcss-preset-env) и [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem)) css-файл.
 
 ## Работа с HTML
 
 Для создания html-файла страницы используйте корневую папку разработки - **src**, а для создания часто используемых и одинаковых частей html-кода используйте папку **partials**.
 
-Сборщик проектов Vite при помощи плагина [vite-plugin-html-inject](https://github.com/donnikitos/vite-plugin-html-inject), позволяет разделять html-код на части, вынося одинаковые части в отдельный файл и подключая их в нужных местах.
-
-Для подключения файла с частью html-кода в файле html-страницы используйте:
-
+Многие процессы работы с html-файлами автоматизированы при помощи плагинов для **vite**:
+- Плагин [vite-plugin-html-inject](https://github.com/donnikitos/vite-plugin-html-inject), позволяет разделять html-код на части, вынося одинаковые элементы в отдельные файлы и подключая их в нужных местах.
 ```html
 <load src="./partials/название-файла.html" />
 ```
-
-Так же сборщик Vite при помощи плагина [@spiriit/vite-plugin-svg-spritemap](https://github.com/SpiriitLabs/vite-plugin-svg-spritemap), позволяет легко и удобно работать с svg иконками из папки **icons** как с svg спрайтом.
-Для использования SVG спрайтов используйте:
-
+> **ВАЖНО:** В этих частях html-кода следует использовать пути относительно текущего файла, в котором подключена часть html-кода (например при использовании `img` в атрибуте `src`).
+- Плагин [@spiriit/vite-plugin-svg-spritemap](https://github.com/SpiriitLabs/vite-plugin-svg-spritemap), позволяет легко и удобно работать с svg иконками из папки **icons** как с svg спрайтом. Он автоматически собирает svg спрайт из тех иконок, которые находятся в папке **icons**.
 ```html
 <svg>
-  <use xlink:href="./sprite#название-иконки"></use>
+    <use xlink:href="./sprite#название-иконки"></use>
 </svg>
 ```
+> Если иконка не подгружается, попробуйте перезапустить сборку и перезагрузить страницу с очисткой кэша.
+- Плагин [vite-plugin-html-img-to-picture](https://github.com/atrocityz/vite-plugin-html-img-to-picture), позволяет автоматически в build версии проекта преобразовывать использование html-тега `img` в `picture` вместе с конвертацией изображения в современные форматы и его оптимизацией.  Плагин обрабатывает только использование изображений из директории **/src/images/** и только изображения форматов **jpg**, **jpeg** или **png**.
+```html
+<!-- Изображение изначально загружено в 2x размере (например, 300x300) -->
+<img src="./images/название-изображения.png" alt="" />
+```
+будет преобразовано в:
+```html
+<picture>
+    <source
+        type="image/avif"
+        srcset="/assets/images/название-изображения.avif, /assets/images/название-изображения@2x.avif 2x"
+        sizes="(min-width: 150px) 150px, 100vw"
+    />
+    <source
+        type="image/webp"
+        srcset="/assets/images/название-изображения.webp, /assets/images/название-изображения@2x.webp 2x"
+        sizes="(min-width: 150px) 150px, 100vw"
+    />
+    <img
+        src="/assets/images/название-изображения.png"
+        srcset="/assets/images/название-изображения.png, /assets/images/название-изображения@2x.png 2x"
+        sizes="(min-width: 150px) 150px, 100vw"
+        decoding="async"
+        loading="lazy"
+        width="150"
+        height="150"
+        alt=""
+    />
+</picture>
+```
+> **ВАЖНО:** Изображение, которое будет конвертироваться плагином следует изначально загружать в 2x формате (если установлен параметр `isRetinaSupport: true` для плагина, по умолчанию так и есть), подробнее в документации плагина.
 
 ## Работа с JavaScript
 
