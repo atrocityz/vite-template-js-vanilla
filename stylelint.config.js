@@ -1,13 +1,30 @@
-{
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
-  "rules": {
+/**
+ * @see https://stylelint.io/user-guide/configure/
+ * @type {import('stylelint').Config}
+ */
+
+export default {
+  ignoreFiles: [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "**/*.log",
+    "**/npm-debug.log*",
+    "**/.git/**",
+    "**/.idea/**",
+    "**/.vscode/**",
+    "**/.DS_Store",
+  ],
+  extends: ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
+  rules: {
     "at-rule-empty-line-before": [
       "always",
       {
-        "except": ["blockless-after-same-name-blockless", "first-nested"],
-        "ignore": ["after-comment"],
-        "ignoreAtRules": ["else"]
-      }
+        except: ["blockless-after-same-name-blockless", "first-nested"],
+        ignore: ["after-comment"],
+        ignoreAtRules: ["else"],
+      },
     ],
     "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,
@@ -33,9 +50,9 @@
     "scss/double-slash-comment-empty-line-before": [
       "always",
       {
-        "except": ["first-nested"],
-        "ignore": ["between-comments", "stylelint-commands"]
-      }
+        except: ["first-nested"],
+        ignore: ["between-comments", "stylelint-commands"],
+      },
     ],
     "value-keyword-case": "lower",
     "value-no-vendor-prefix": true,
@@ -61,9 +78,9 @@
     "scss/dollar-variable-empty-line-before": [
       "always",
       {
-        "except": ["after-dollar-variable", "first-nested"],
-        "ignore": ["after-comment", "inside-single-line-block"]
-      }
+        except: ["after-dollar-variable", "first-nested"],
+        ignore: ["after-comment", "inside-single-line-block"],
+      },
     ],
     "selector-attribute-quotes": "always",
     "selector-max-attribute": null,
@@ -88,8 +105,8 @@
     "block-no-empty": [
       true,
       {
-        "severity": "warning"
-      }
+        severity: "warning",
+      },
     ],
     "color-hex-length": "short",
     "color-no-hex": null,
@@ -97,9 +114,9 @@
     "comment-empty-line-before": [
       "always",
       {
-        "except": ["first-nested"],
-        "ignore": ["after-comment", "stylelint-commands"]
-      }
+        except: ["first-nested"],
+        ignore: ["after-comment", "stylelint-commands"],
+      },
     ],
     "comment-no-empty": null,
     "comment-whitespace-inside": "always",
@@ -107,9 +124,9 @@
     "custom-property-empty-line-before": [
       "always",
       {
-        "except": ["after-custom-property", "first-nested"],
-        "ignore": ["after-comment", "inside-single-line-block"]
-      }
+        except: ["after-custom-property", "first-nested"],
+        ignore: ["after-comment", "inside-single-line-block"],
+      },
     ],
     "font-family-name-quotes": "always-unless-keyword",
     "font-family-no-duplicate-names": true,
@@ -122,22 +139,22 @@
     "no-empty-source": [
       true,
       {
-        "severity": "warning"
-      }
+        severity: "warning",
+      },
     ],
     "number-max-precision": 5,
     "property-no-unknown": [
       true,
       {
-        "checkPrefixed": true
-      }
+        checkPrefixed: true,
+      },
     ],
     "rule-empty-line-before": [
       "always-multi-line",
       {
-        "except": ["first-nested"],
-        "ignore": ["after-comment"]
-      }
-    ]
-  }
+        except: ["first-nested"],
+        ignore: ["after-comment"],
+      },
+    ],
+  },
 }
