@@ -1,10 +1,10 @@
 import { defineConfig } from "vite"
 import path from "path"
-import { ViteImageOptimizer } from "vite-plugin-image-optimizer"
 import glob from "fast-glob"
 import injectHTML from "vite-plugin-html-inject"
 import VitePluginSvgSpritemap from "@spiriit/vite-plugin-svg-spritemap"
 import { createHtmlPlugin } from "vite-plugin-html"
+import { imgToPicture } from "vite-plugin-html-img-to-picture"
 
 const root = path.resolve(__dirname, "src")
 const outDir = path.resolve(__dirname, "dist")
@@ -56,27 +56,7 @@ export default defineConfig({
   },
 
   plugins: [
-    ViteImageOptimizer({
-      optimizeImages: true,
-      svg: {
-        plugins: ["removeDoctype", "removeXMLProcInst", "minifyStyles", "sortAttrs", "sortDefsChildren"],
-      },
-      png: {
-        quality: 80,
-      },
-      jpeg: {
-        quality: 80,
-      },
-      jpg: {
-        quality: 80,
-      },
-      webp: {
-        quality: 80,
-      },
-      avif: {
-        quality: 80,
-      },
-    }),
+    imgToPicture(),
     VitePluginSvgSpritemap("./icons/*.svg", {
       prefix: false,
       route: "sprite",
