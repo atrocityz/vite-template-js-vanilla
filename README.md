@@ -106,48 +106,59 @@ npx create-vite-template-js --vanilla
 Для создания html-файла страницы используйте корневую папку разработки - **src**, а для создания часто используемых и одинаковых частей html-кода используйте папку **partials**.
 
 Многие процессы работы с html-файлами автоматизированы при помощи плагинов для **vite**:
+
 - Плагин [vite-plugin-html-inject](https://github.com/donnikitos/vite-plugin-html-inject), позволяет разделять html-код на части, вынося одинаковые элементы в отдельные файлы и подключая их в нужных местах.
+
 ```html
 <load src="./partials/название-файла.html" />
 ```
+
 > **ВАЖНО:** В этих частях html-кода следует использовать пути относительно текущего файла, в котором подключена часть html-кода (например при использовании `img` в атрибуте `src`).
+
 - Плагин [@spiriit/vite-plugin-svg-spritemap](https://github.com/SpiriitLabs/vite-plugin-svg-spritemap), позволяет легко и удобно работать с svg иконками из папки **icons** как с svg спрайтом. Он автоматически собирает svg спрайт из тех иконок, которые находятся в папке **icons**.
+
 ```html
 <svg>
-    <use xlink:href="./sprite#название-иконки"></use>
+  <use xlink:href="./sprite#название-иконки"></use>
 </svg>
 ```
+
 > Если иконка не подгружается, попробуйте перезапустить сборку и перезагрузить страницу с очисткой кэша.
-- Плагин [vite-plugin-html-img-to-picture](https://github.com/atrocityz/vite-plugin-html-img-to-picture), позволяет автоматически в build версии проекта преобразовывать использование html-тега `img` в `picture` вместе с конвертацией изображения в современные форматы и его оптимизацией.  Плагин обрабатывает только использование изображений из директории **/src/images/** и только изображения форматов **jpg**, **jpeg** или **png**.
+
+- Плагин [@atrocityz/vite-plugin-html-img-to-picture](https://github.com/atrocityz/vite-plugin-html-img-to-picture), позволяет автоматически в build версии проекта преобразовывать использование html-тега `img` в `picture` вместе с конвертацией изображения в современные форматы и его оптимизацией. Плагин обрабатывает только использование изображений из директории **/src/images/** и только изображения форматов **jpg**, **jpeg** или **png**.
+
 ```html
 <!-- Изображение изначально загружено в 2x размере (например, 300x300) -->
 <img src="./images/название-изображения.png" alt="" />
 ```
+
 будет преобразовано в:
+
 ```html
 <picture>
-    <source
-        type="image/avif"
-        srcset="/assets/images/название-изображения.avif, /assets/images/название-изображения@2x.avif 2x"
-        sizes="(min-width: 150px) 150px, 100vw"
-    />
-    <source
-        type="image/webp"
-        srcset="/assets/images/название-изображения.webp, /assets/images/название-изображения@2x.webp 2x"
-        sizes="(min-width: 150px) 150px, 100vw"
-    />
-    <img
-        src="/assets/images/название-изображения.png"
-        srcset="/assets/images/название-изображения.png, /assets/images/название-изображения@2x.png 2x"
-        sizes="(min-width: 150px) 150px, 100vw"
-        decoding="async"
-        loading="lazy"
-        width="150"
-        height="150"
-        alt=""
-    />
+  <source
+    type="image/avif"
+    srcset="/assets/images/название-изображения.avif, /assets/images/название-изображения@2x.avif 2x"
+    sizes="(min-width: 150px) 150px, 100vw"
+  />
+  <source
+    type="image/webp"
+    srcset="/assets/images/название-изображения.webp, /assets/images/название-изображения@2x.webp 2x"
+    sizes="(min-width: 150px) 150px, 100vw"
+  />
+  <img
+    src="/assets/images/название-изображения.png"
+    srcset="/assets/images/название-изображения.png, /assets/images/название-изображения@2x.png 2x"
+    sizes="(min-width: 150px) 150px, 100vw"
+    decoding="async"
+    loading="lazy"
+    width="150"
+    height="150"
+    alt=""
+  />
 </picture>
 ```
+
 > **ВАЖНО:** Изображение, которое будет конвертироваться плагином следует изначально загружать в 2x формате (если установлен параметр `isRetinaSupport: true` для плагина, по умолчанию так и есть), подробнее в документации плагина.
 
 ## Работа с JavaScript
