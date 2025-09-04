@@ -4,7 +4,7 @@ import glob from "fast-glob"
 import injectHTML from "vite-plugin-html-inject"
 import VitePluginSvgSpritemap from "@spiriit/vite-plugin-svg-spritemap"
 import { createHtmlPlugin } from "vite-plugin-html"
-import { imgToPicture } from "vite-plugin-html-img-to-picture"
+import { imgToPicture } from "@atrocityz/vite-plugin-html-img-to-picture"
 
 const root = path.resolve(__dirname, "src")
 const outDir = path.resolve(__dirname, "dist")

@@ -13,6 +13,7 @@
     "prettier": "prettier --write src/**/*.{js,jsx,scss,css,html}"
   },
   "devDependencies": {
+    "@atrocityz/vite-plugin-html-img-to-picture": "^1.0.5",
     "@eslint/js": "^9.20.0",
     "@spiriit/vite-plugin-svg-spritemap": "^4.0.0",
     "autoprefixer": "^10.4.20",
@@ -31,7 +32,6 @@
     "svgo": "^3.3.2",
     "vite": "^6.1.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-html-img-to-picture": "^1.0.4",
     "vite-plugin-html-inject": "^1.1.2"
   },
   "dependencies": {
