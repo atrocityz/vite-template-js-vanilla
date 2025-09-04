@@ -37,6 +37,6 @@
     "vite-plugin-image-optimizer": "^1.1.8"
   },
   "dependencies": {
-    "@a1rth/css-normalize": "^1.1.9"
+    "@a1rth/css-normalize": "^1.2.1"
   }
 }
