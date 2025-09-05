@@ -1,4 +1,4 @@
-# Шаблон для разработки интерфейсов на HTML, SCSS и JS со сборщиком Vite
+# Шаблон для быстрого старта верстки на HTML + JS + Vite
 
 _HTML, SCSS, PostCSS, JS, Prettier, Eslint, Vite_
 
@@ -115,7 +115,7 @@ npx create-vite-template-js --vanilla
 
 > **ВАЖНО:** В этих частях html-кода следует использовать пути относительно текущего файла, в котором подключена часть html-кода (например при использовании `img` в атрибуте `src`).
 
-- Плагин [@spiriit/vite-plugin-svg-spritemap](https://github.com/SpiriitLabs/vite-plugin-svg-spritemap), позволяет легко и удобно работать с svg иконками из папки **icons** как с svg спрайтом. Он автоматически собирает svg спрайт из тех иконок, которые находятся в папке **icons**.
+- Плагин [@spiriit/vite-plugin-svg-spritemap](https://github.com/SpiriitLabs/vite-plugin-svg-spritemap), позволяет легко и удобно работать с svg иконками из папки **icons** как с svg спрайтом.
 
 ```html
 <svg>
