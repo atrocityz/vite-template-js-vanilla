@@ -1,0 +1,14 @@
+{
+  "Use icon sprite": {
+    "scope": "html",
+    "prefix": "use",
+    "body": ["<svg><use xlink:href='./sprite#$1'></use></svg>"],
+    "description": "Use icon via svg sprite",
+  },
+  "Load html partial": {
+    "scope": "html",
+    "prefix": "load",
+    "body": ["<load src='./partials/$1.html' />"],
+    "description": "Connect html partial via load tag",
+  },
+}
