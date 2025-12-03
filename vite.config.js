@@ -7,16 +7,15 @@ import { createHtmlPlugin } from "vite-plugin-html"
 import { imgToPicture } from "@atrocityz/vite-plugin-html-img-to-picture"
 
 const root = path.resolve(__dirname, "src")
-const outDir = path.resolve(__dirname, "dist")
 const htmlFiles = glob.sync("**/*.html", { cwd: root, ignore: ["**/node_modules/**", "**/_*", "**/partials/*"] })
 
 export default defineConfig({
   root,
   base: "/",
-  publicDir: "../public",
+  publicDir: path.resolve(__dirname, "public"),
 
   build: {
-    outDir,
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     minify: true,
     assetsInlineLimit: 0,
