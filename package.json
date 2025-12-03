@@ -13,27 +13,27 @@
     "prettier": "prettier --write src/**/*.{js,jsx,scss,css,html}"
   },
   "devDependencies": {
-    "@atrocityz/vite-plugin-html-img-to-picture": "^1.0.5",
-    "@eslint/js": "^9.20.0",
-    "@spiriit/vite-plugin-svg-spritemap": "^4.0.0",
-    "eslint": "^9.20.1",
+    "@atrocityz/vite-plugin-html-img-to-picture": "^1.0.7",
+    "@eslint/js": "^9.39.1",
+    "@spiriit/vite-plugin-svg-spritemap": "^5.0.0",
+    "eslint": "^9.39.1",
     "fast-glob": "^3.3.3",
-    "globals": "^15.15.0",
-    "postcss": "^8.5.2",
-    "postcss-preset-env": "^10.1.5",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^10.4.0",
     "postcss-pxtorem": "^6.1.0",
-    "prettier": "^3.5.3",
-    "sass": "^1.85.0",
-    "stylelint": "^16.21.0",
-    "stylelint-config-recess-order": "^7.1.0",
-    "stylelint-config-recommended": "^16.0.0",
-    "stylelint-config-standard-scss": "^15.0.1",
-    "svgo": "^3.3.2",
-    "vite": "^6.3.5",
+    "prettier": "^3.7.4",
+    "sass": "^1.94.2",
+    "stylelint": "^16.26.1",
+    "stylelint-config-recess-order": "^7.4.0",
+    "stylelint-config-recommended": "^17.0.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "svgo": "^4.0.0",
+    "vite": "^7.2.6",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-html-inject": "^1.1.2"
   },
   "dependencies": {
-    "@a1rth/css-normalize": "^1.2.1"
+    "@a1rth/css-normalize": "^1.2.4"
   }
 }
